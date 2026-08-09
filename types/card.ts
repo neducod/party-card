@@ -1,4 +1,5 @@
-export type BackgroundMode = "solid" | "gradient";
+export type BackgroundMode = "solid" | "gradient" | "image";
+
 
 export interface GradientStops {
   from: string;
@@ -55,3 +56,13 @@ export const DEFAULT_CARD_STATE: CardState = {
     fontSize: 40,
   },
 };
+export interface Cardstyle {
+    backgroundMode: BackgroundMode;
+    backgroundColor: string;
+    gradient: GradientStops;
+    imageUrl?: string;        // Base64 data URL or image path
+    overlayOpacity: number;   // 0.1 to 1.0 for blending
+    fontFamily: string;
+    textColor: string;
+    fontSize: number;
+}
