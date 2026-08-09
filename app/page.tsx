@@ -22,7 +22,7 @@ export default function Home() {
 
       <section className="flex flex-1 flex-col items-center justify-center gap-6 bg-neutral-100 p-8">
         <CardPreview ref={previewRef} state={cardState.state} />
-        <ExportBar targetRef={previewRef} fileName={cardState.state.details.eventName || "invitation"} />
+        {/* <ExportBar targetRef={previewRef} fileName={cardState.state.details.eventName || "invitation"} /> */}
       </section>
     </main>
   );
