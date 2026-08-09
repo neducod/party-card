@@ -45,7 +45,7 @@ export const CardPreview = forwardRef<HTMLDivElement, CardPreviewProps>(
         {/* Foreground Content Container */}
         <div className="relative z-10 flex w-full flex-col items-center justify-center">
           <p
-            className="tracking-wide opacity-90"
+            className="tracking-wide opacity-80"
             style={{ fontSize: style.fontSize * 0.35 }}
           >
             I am inviting you

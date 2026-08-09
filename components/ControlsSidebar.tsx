@@ -30,7 +30,7 @@ export function ControlsSidebar({ state, updateDetails, updateStyle, updateGradi
             type="text"
             value={details.hostName}
             onChange={(e) => updateDetails({ hostName: e.target.value })}
-            className="input"
+            className="input text-black"
             placeholder="Alex"
           />
         </Field>
@@ -40,7 +40,7 @@ export function ControlsSidebar({ state, updateDetails, updateStyle, updateGradi
             type="text"
             value={details.eventName}
             onChange={(e) => updateDetails({ eventName: e.target.value })}
-            className="input"
+            className="input text-black"
             placeholder="Birthday Party"
           />
         </Field>
@@ -50,7 +50,7 @@ export function ControlsSidebar({ state, updateDetails, updateStyle, updateGradi
             type="text"
             value={details.date ?? ""}
             onChange={(e) => updateDetails({ date: e.target.value })}
-            className="input"
+            className="input text-black"
             placeholder="August 20, 2026"
           />
         </Field>
@@ -60,7 +60,7 @@ export function ControlsSidebar({ state, updateDetails, updateStyle, updateGradi
             type="text"
             value={details.time ?? ""}
             onChange={(e) => updateDetails({ time: e.target.value })}
-            className="input"
+            className="input text-black"
             placeholder="7:00 PM"
           />
         </Field>
@@ -70,7 +70,7 @@ export function ControlsSidebar({ state, updateDetails, updateStyle, updateGradi
             type="text"
             value={details.venue ?? ""}
             onChange={(e) => updateDetails({ venue: e.target.value })}
-            className="input"
+            className="input text-black"
             placeholder="The Garden Terrace"
           />
         </Field>
@@ -79,7 +79,7 @@ export function ControlsSidebar({ state, updateDetails, updateStyle, updateGradi
           <textarea
             value={details.note ?? ""}
             onChange={(e) => updateDetails({ note: e.target.value })}
-            className="input min-h-[70px] resize-none"
+            className="input min-h-[70px] resize-none text-black"
             placeholder="Come ready to dance!"
           />
         </Field>
@@ -96,7 +96,7 @@ export function ControlsSidebar({ state, updateDetails, updateStyle, updateGradi
               onClick={() => updateStyle({ backgroundMode: mode })}
               className={`flex-1 rounded-lg border px-3 py-1.5 text-sm capitalize ${
                 style.backgroundMode === mode
-                  ? "border-neutral-900 bg-neutral-900 text-white"
+                  ? "border-neutral-900 bg-neutral-900"
                   : "border-neutral-300 text-neutral-600"
               }`}
             >
