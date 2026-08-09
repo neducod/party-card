@@ -35,3 +35,16 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
 # party-card
+
+A little Project Overview
+Party Card is an interactive digital invitation generator designed to showcase modern frontend architecture, reactive state management, and high-performance client-side image rendering. Users can customize invitation copy, background gradients, SVG pattern overlays, and typography with a real-time side-by-side preview canvas.
+
+Key Technical Highlights
+
+Type-Safe Component Architecture: Built with Next.js App Router and TypeScript, using explicit interfaces to maintain strict data boundaries.
+
+Unidirectional State Flow: Built a custom React hook (useCardState) to synchronize complex style mutations and text inputs across split-screen layout views.
+
+Client-Side Export Engine: Leveraged html-to-image and forwardRef to parse raw DOM nodes into high-dpi images without server overhead or CORS degradation.
+
+Vector Pattern Overlays: Integrated scalable inline SVG background patterns with adjustable opacity and blend modes.
