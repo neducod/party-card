@@ -1,5 +1,4 @@
-export type BackgroundMode = "solid" | "gradient" | "image";
-
+export type BackgroundMode = "solid" | "gradient";
 
 export interface GradientStops {
   from: string;
@@ -20,6 +19,8 @@ export interface CardStyle {
   backgroundMode: BackgroundMode;
   backgroundColor: string;
   gradient: GradientStops;
+  patternId: string;
+  patternOpacity: number;
   fontFamily: string;
   textColor: string;
   fontSize: number;
@@ -51,18 +52,10 @@ export const DEFAULT_CARD_STATE: CardState = {
     backgroundMode: "gradient",
     backgroundColor: "#1e1b4b",
     gradient: { from: "#7c3aed", to: "#db2777", angle: 135 },
+    patternId: "dots",
+    patternOpacity: 0.25,
     fontFamily: FONT_OPTIONS[0].value,
     textColor: "#ffffff",
     fontSize: 40,
   },
 };
-export interface Cardstyle {
-    backgroundMode: BackgroundMode;
-    backgroundColor: string;
-    gradient: GradientStops;
-    imageUrl?: string;        // Base64 data URL or image path
-    overlayOpacity: number;   // 0.1 to 1.0 for blending
-    fontFamily: string;
-    textColor: string;
-    fontSize: number;
-}

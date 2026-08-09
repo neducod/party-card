@@ -2,6 +2,7 @@
 
 import { forwardRef } from "react";
 import { CardState } from "@/types/card";
+import { PATTERN_OPTIONS } from "@/lib/patterns";
 
 interface CardPreviewProps {
   state: CardState;
@@ -16,6 +17,8 @@ export const CardPreview = forwardRef<HTMLDivElement, CardPreviewProps>(
         ? `linear-gradient(${style.gradient.angle}deg, ${style.gradient.from}, ${style.gradient.to})`
         : style.backgroundColor;
 
+    const selectedPattern = PATTERN_OPTIONS.find((p) => p.id === style.patternId);
+
     return (
       <div
         ref={ref}
@@ -26,38 +29,69 @@ export const CardPreview = forwardRef<HTMLDivElement, CardPreviewProps>(
           fontFamily: style.fontFamily,
         }}
       >
-        <p className="tracking-wide opacity-90" style={{ fontSize: style.fontSize * 0.35 }}>
-          I am inviting you
-        </p>
-
-        <p className="mt-2 tracking-wide opacity-90" style={{ fontSize: style.fontSize * 0.35 }}>
-          to my
-        </p>
-
-        <h1 className="mt-3 font-bold leading-tight" style={{ fontSize: style.fontSize }}>
-          {details.eventName || "Event Name"}
-        </h1>
-
-        <p className="mt-4 text-sm opacity-90" style={{ fontSize: style.fontSize * 0.32 }}>
-          Hosted by {details.hostName || "Host Name"}
-        </p>
-
-        {(details.date || details.time || details.venue) && (
+        {/* SVG Pattern Overlay Layer */}
+        {selectedPattern && selectedPattern.id !== "none" && (
           <div
-            className="mt-6 space-y-1 border-t border-current/30 pt-4 text-sm opacity-90"
-            style={{ fontSize: style.fontSize * 0.3 }}
-          >
-            {details.date && <p>{details.date}</p>}
-            {details.time && <p>{details.time}</p>}
-            {details.venue && <p>{details.venue}</p>}
-          </div>
+            className="pointer-events-none absolute inset-0 z-0"
+            style={{
+              backgroundImage: `url('${selectedPattern.svgDataUrl}')`,
+              backgroundRepeat: style.patternId === "border-frame" ? "no-repeat" : "repeat",
+              backgroundSize: style.patternId === "border-frame" ? "100% 100%" : "auto",
+              opacity: style.patternOpacity ?? 0.25,
+            }}
+          />
         )}
 
-        {details.note && (
-          <p className="mt-6 max-w-xs text-sm italic opacity-80" style={{ fontSize: style.fontSize * 0.28 }}>
-            {details.note}
+        {/* Foreground Content Container */}
+        <div className="relative z-10 flex w-full flex-col items-center justify-center">
+          <p
+            className="tracking-wide opacity-90"
+            style={{ fontSize: style.fontSize * 0.35 }}
+          >
+            I am inviting you
           </p>
-        )}
+
+          <p
+            className="mt-2 tracking-wide opacity-90"
+            style={{ fontSize: style.fontSize * 0.35 }}
+          >
+            to my
+          </p>
+
+          <h1
+            className="mt-3 font-bold leading-tight"
+            style={{ fontSize: style.fontSize }}
+          >
+            {details.eventName || "Event Name"}
+          </h1>
+
+          <p
+            className="mt-4 text-sm opacity-90"
+            style={{ fontSize: style.fontSize * 0.32 }}
+          >
+            Hosted by {details.hostName || "Host Name"}
+          </p>
+
+          {(details.date || details.time || details.venue) && (
+            <div
+              className="mt-6 w-full space-y-1 border-t border-current/30 pt-4 text-sm opacity-90"
+              style={{ fontSize: style.fontSize * 0.3 }}
+            >
+              {details.date && <p>{details.date}</p>}
+              {details.time && <p>{details.time}</p>}
+              {details.venue && <p>{details.venue}</p>}
+            </div>
+          )}
+
+          {details.note && (
+            <p
+              className="mt-6 max-w-xs text-sm italic opacity-80"
+              style={{ fontSize: style.fontSize * 0.28 }}
+            >
+              {details.note}
+            </p>
+          )}
+        </div>
       </div>
     );
   }

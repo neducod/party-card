@@ -1,6 +1,7 @@
 "use client";
 
 import { FONT_OPTIONS } from "@/types/card";
+import { PATTERN_OPTIONS } from "@/lib/patterns";
 import { UseCardStateReturn } from "@/hooks/useCardState";
 
 type Props = Pick<UseCardStateReturn, "state" | "updateDetails" | "updateStyle" | "updateGradient" | "reset">;
@@ -12,13 +13,18 @@ export function ControlsSidebar({ state, updateDetails, updateStyle, updateGradi
     <aside className="flex w-full max-w-sm flex-col gap-6 overflow-y-auto border-r border-neutral-200 bg-white p-6">
       <div className="flex items-center justify-between">
         <h2 className="text-lg font-semibold">Customize</h2>
-        <button onClick={reset} className="text-xs text-neutral-500 underline hover:text-neutral-800">
+        <button
+          onClick={reset}
+          className="text-xs text-neutral-500 underline hover:text-neutral-800"
+        >
           Reset
         </button>
       </div>
 
+      {/* Invitation Text Fields */}
       <section className="space-y-3">
         <h3 className="text-sm font-medium text-neutral-700">Invitation Details</h3>
+
         <Field label="Host Name">
           <input
             type="text"
@@ -28,6 +34,7 @@ export function ControlsSidebar({ state, updateDetails, updateStyle, updateGradi
             placeholder="Alex"
           />
         </Field>
+
         <Field label="Event Name">
           <input
             type="text"
@@ -37,6 +44,7 @@ export function ControlsSidebar({ state, updateDetails, updateStyle, updateGradi
             placeholder="Birthday Party"
           />
         </Field>
+
         <Field label="Date">
           <input
             type="text"
@@ -46,6 +54,7 @@ export function ControlsSidebar({ state, updateDetails, updateStyle, updateGradi
             placeholder="August 20, 2026"
           />
         </Field>
+
         <Field label="Time">
           <input
             type="text"
@@ -55,6 +64,7 @@ export function ControlsSidebar({ state, updateDetails, updateStyle, updateGradi
             placeholder="7:00 PM"
           />
         </Field>
+
         <Field label="Venue">
           <input
             type="text"
@@ -64,6 +74,7 @@ export function ControlsSidebar({ state, updateDetails, updateStyle, updateGradi
             placeholder="The Garden Terrace"
           />
         </Field>
+
         <Field label="Custom Note">
           <textarea
             value={details.note ?? ""}
@@ -74,8 +85,10 @@ export function ControlsSidebar({ state, updateDetails, updateStyle, updateGradi
         </Field>
       </section>
 
+      {/* Background Options */}
       <section className="space-y-3">
         <h3 className="text-sm font-medium text-neutral-700">Background</h3>
+
         <div className="flex gap-2">
           {(["solid", "gradient"] as const).map((mode) => (
             <button
@@ -131,10 +144,41 @@ export function ControlsSidebar({ state, updateDetails, updateStyle, updateGradi
             </Field>
           </div>
         )}
+
+        {/* Pattern Selectors */}
+        <Field label="Pattern Overlay">
+          <select
+            value={style.patternId ?? "none"}
+            onChange={(e) => updateStyle({ patternId: e.target.value })}
+            className="input"
+          >
+            {PATTERN_OPTIONS.map((p) => (
+              <option key={p.id} value={p.id}>
+                {p.label}
+              </option>
+            ))}
+          </select>
+        </Field>
+
+        {style.patternId && style.patternId !== "none" && (
+          <Field label={`Pattern Opacity (${Math.round((style.patternOpacity ?? 0.25) * 100)}%)`}>
+            <input
+              type="range"
+              min={0.05}
+              max={0.8}
+              step={0.05}
+              value={style.patternOpacity ?? 0.25}
+              onChange={(e) => updateStyle({ patternOpacity: Number(e.target.value) })}
+              className="w-full"
+            />
+          </Field>
+        )}
       </section>
 
+      {/* Typography Options */}
       <section className="space-y-3">
         <h3 className="text-sm font-medium text-neutral-700">Typography</h3>
+
         <Field label="Font Family">
           <select
             value={style.fontFamily}
@@ -148,6 +192,7 @@ export function ControlsSidebar({ state, updateDetails, updateStyle, updateGradi
             ))}
           </select>
         </Field>
+
         <Field label="Text Color">
           <input
             type="color"
@@ -156,6 +201,7 @@ export function ControlsSidebar({ state, updateDetails, updateStyle, updateGradi
             className="h-10 w-full cursor-pointer rounded-md border border-neutral-300"
           />
         </Field>
+
         <Field label={`Event Name Size (${style.fontSize}px)`}>
           <input
             type="range"
