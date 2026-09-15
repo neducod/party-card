@@ -94,7 +94,7 @@ export function ControlsSidebar({ state, updateDetails, updateStyle, updateGradi
           <textarea
             value={details.note ?? ""}
             onChange={(e) => updateDetails({ note: e.target.value })}
-            className="input min-h-[70px] resize-none text-black"
+            className="input min-h-[70px] resize-none text-red-600"
             placeholder="Come ready to dance!"
           />
         </Field>
