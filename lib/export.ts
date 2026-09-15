@@ -19,7 +19,22 @@ async function renderToDataUrl(
     quality,
     pixelRatio,
     cacheBust: true,
-    skipFonts: false,
+    // 1. Skip font inlining to prevent security exceptions on external stylesheets
+    skipFonts: true,
+    // 2. Filter out cross-origin <link> stylesheets that fail CORS checks
+    filter: (element: HTMLElement) => {
+      if (
+        element.tagName === "LINK" &&
+        (element as HTMLLinkElement).rel === "stylesheet"
+      ) {
+        const href = (element as HTMLLinkElement).href;
+        // Keep internal styles; exclude cross-origin stylesheet URLs
+        if (typeof window !== "undefined") {
+          return href.startsWith(window.location.origin);
+        }
+      }
+      return true;
+    },
   };
 
   return format === "jpeg" ? toJpeg(node, options) : toPng(node, options);
@@ -36,7 +51,11 @@ export async function downloadCard(node: HTMLElement, opts: ExportOptions = {}) 
 }
 
 export function canUseWebShare(): boolean {
-  return typeof navigator !== "undefined" && !!navigator.share && !!navigator.canShare;
+  // Prevent SSR crashes during build step on Vercel
+  if (typeof window === "undefined" || typeof navigator === "undefined") {
+    return false;
+  }
+  return !!navigator.share && !!navigator.canShare;
 }
 
 export async function shareCard(node: HTMLElement, opts: ExportOptions = {}) {
