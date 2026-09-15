@@ -55,7 +55,7 @@ export function ExportBar({ targetRef, fileName = "invitation-card" }: Props) {
           disabled={busy !== null}
           onClick={() => withNode((n) => downloadCard(n, { format, fileName }), "download")}
           className="flex-1 rounded-lg bg-red-600 px-4 py-3 text-sm font-semibold text-black transition hover:bg-red-700 disabled:opacity-50"
-        >fghjkl
+        >
           {busy === "download" ? "Preparing…" : justDownloaded ? "Downloaded ✓" : "Download Image"}
         </button>
 
@@ -64,7 +64,7 @@ export function ExportBar({ targetRef, fileName = "invitation-card" }: Props) {
             disabled={busy !== null}
             onClick={() => withNode((n) => shareCard(n, { format, fileName }).then(() => {}), "share")}
             className="flex-1 rounded-lg border border-neutral-900 bg-white px-4 py-3 text-sm font-semibold text-neutral-900 transition hover:bg-neutral-100 disabled:opacity-50"
-          >dfghjklkjhgfdfgh
+          >
             {busy === "share" ? "Sharing…" : "Share"}
           </button>
         )}
