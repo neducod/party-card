@@ -1,6 +1,4 @@
-
-
-# Party Card 🎈
+# Ink and Paint 🎨🖌️
 
 An interactive digital invitation generator engineered to showcase modern frontend architecture, reactive state management, and high-performance client-side image rendering.
 
@@ -8,7 +6,7 @@ Party Card provides a real-time side-by-side preview canvas where users can uplo
 
 ---
 
-## Key Features
+## Key Features 𖡎
 
 * **Custom Image Uploads:** Seamlessly upload and position personal images from local devices onto the canvas.
 * **Real-Time Preview:** Side-by-side layout updates invitation copy, font pairings, and color palettes instantaneously.
@@ -17,7 +15,7 @@ Party Card provides a real-time side-by-side preview canvas where users can uplo
 
 ---
 
-## Key Technical Highlights
+## Key Technical Highlights 🛠️
 
 * **Type-Safe Component Architecture:** Built with Next.js App Router and TypeScript, utilizing strict explicit interfaces across components to maintain robust data boundaries.
 * **Unidirectional State Flow:** Implemented a custom React hook (`useCardState`) to synchronize complex style mutations, image assets, and text inputs cleanly across split-screen views.
@@ -26,7 +24,7 @@ Party Card provides a real-time side-by-side preview canvas where users can uplo
 
 ---
 
-## Tech Stack
+## Tech Stack 💻
 
 | Layer | Technology |
 | --- | --- |
