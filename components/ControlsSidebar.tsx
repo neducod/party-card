@@ -13,11 +13,11 @@ export function ControlsSidebar({ state, updateDetails, updateStyle, updateGradi
     <aside className="flex w-full max-w-sm flex-col gap-6 overflow-y-auto border-r border-neutral-200 bg-white p-6">
       <div className="flex flex-col gap-6">
         <div className="flex flex-col">
-          <h1 className="text-lg font-semibold text-[#E97451] ">Ink and Paint</h1>
-          <p className="text-sm">Create your customize party invitation card</p>
+          <h1 className="text-xl font-extrabold text-[#E97451] ">Ink and Paint</h1>
+          <p className="text-sm text-gray-500">Create your customize party invitation card</p>
         </div>
         <div className="flex items-center justify-between gap-4">
-          <h2 className="text-lg font-semibold">Customize</h2>
+          <h2 className="text-base font-semibold">Customize</h2>
           <button
             onClick={reset}
             className="text-xs text-neutral-500 underline hover:text-neutral-800"
