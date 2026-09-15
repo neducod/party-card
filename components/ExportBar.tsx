@@ -59,7 +59,7 @@ export function ExportBar({ targetRef, fileName = "invitation-card" }: Props) {
           {busy === "download" ? "Preparing…" : justDownloaded ? "Downloaded ✓" : "Download Image"}
         </button>
 
-        {canUseWebShare() && (
+        {/* {canUseWebShare() && (
           <button
             disabled={busy !== null}
             onClick={() => withNode((n) => shareCard(n, { format, fileName }).then(() => {}), "share")}
@@ -67,7 +67,7 @@ export function ExportBar({ targetRef, fileName = "invitation-card" }: Props) {
           >
             {busy === "share" ? "Sharing…" : "Share"}
           </button>
-        )}
+        )} */}
       </div>
     </div>
   );
