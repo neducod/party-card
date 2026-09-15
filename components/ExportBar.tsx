@@ -11,6 +11,7 @@ interface Props {
 export function ExportBar({ targetRef, fileName = "invitation-card" }: Props) {
   const [format, setFormat] = useState<ExportFormat>("png");
   const [busy, setBusy] = useState<"download" | "share" | null>(null);
+  const [justDownloaded, setJustDownloaded] = useState(false);
 
   const withNode = async (action: (node: HTMLElement) => Promise<void>, kind: "download" | "share") => {
     const node = targetRef.current;
@@ -18,6 +19,10 @@ export function ExportBar({ targetRef, fileName = "invitation-card" }: Props) {
     try {
       setBusy(kind);
       await action(node);
+      if (kind === "download") {
+        setJustDownloaded(true);
+        setTimeout(() => setJustDownloaded(false), 2000);
+      }
     } catch (err) {
       console.error("Export failed:", err);
     } finally {
@@ -26,8 +31,8 @@ export function ExportBar({ targetRef, fileName = "invitation-card" }: Props) {
   };
 
   return (
-    <div className="flex w-full max-w-md flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-      <div className="flex gap-2">
+    <div className="flex w-full max-w-md flex-col gap-3">
+      <div className="flex gap-2 self-center">
         {(["png", "jpeg"] as const).map((f) => (
           <button
             key={f}
@@ -43,23 +48,24 @@ export function ExportBar({ targetRef, fileName = "invitation-card" }: Props) {
         ))}
       </div>
 
-      <div className="flex gap-2">
+      <div className="flex gap-2 sm:flex-row">
+        <button
+          disabled={busy !== null}
+          onClick={() => withNode((n) => downloadCard(n, { format, fileName }), "download")}
+          className="flex-1 rounded-lg bg-neutral-900 px-4 py-3 text-sm font-semibold text-white transition hover:bg-neutral-800 disabled:opacity-50"
+        >
+          {busy === "download" ? "Preparing…" : justDownloaded ? "Downloaded ✓" : "Download Image"}
+        </button>
+
         {canUseWebShare() && (
           <button
             disabled={busy !== null}
             onClick={() => withNode((n) => shareCard(n, { format, fileName }).then(() => {}), "share")}
-            className="rounded-lg bg-neutral-900 px-4 py-2 text-sm font-medium text-white disabled:opacity-50"
+            className="flex-1 rounded-lg border border-neutral-900 px-4 py-3 text-sm font-semibold text-neutral-900 disabled:opacity-50"
           >
             {busy === "share" ? "Sharing…" : "Share"}
           </button>
         )}
-        <button
-          disabled={busy !== null}
-          onClick={() => withNode((n) => downloadCard(n, { format, fileName }), "download")}
-          className="rounded-lg border border-neutral-900 px-4 py-2 text-sm font-medium text-neutral-900 disabled:opacity-50"
-        >
-          {busy === "download" ? "Preparing…" : "Download"}
-        </button>
       </div>
     </div>
   );
