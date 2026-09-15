@@ -54,7 +54,7 @@ export function ExportBar({ targetRef, fileName = "invitation-card" }: Props) {
         <button
           disabled={busy !== null}
           onClick={() => withNode((n) => downloadCard(n, { format, fileName }), "download")}
-          className="flex-1 rounded-lg bg-red-600 px-4 py-3 text-sm font-semibold text-black transition hover:bg-red-700 disabled:opacity-50"
+          className="flex-1 rounded-lg bg-white border-black border px-4 py-3 text-sm font-semibold text-black transition hover:bg-gray-100 cursor-pointer disabled:opacity-50"
         >
           {busy === "download" ? "Preparing…" : justDownloaded ? "Downloaded ✓" : "Download Image"}
         </button>
