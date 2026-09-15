@@ -39,7 +39,7 @@ export function ExportBar({ targetRef, fileName = "invitation-card" }: Props) {
             onClick={() => setFormat(f)}
             className={`rounded-md border px-3 py-1.5 text-xs uppercase ${
               format === f
-                ? "border-neutral-900 bg-neutral-900 text-white"
+                ? "border-neutral-900 bg-red-900 text-white"
                 : "border-neutral-300 text-neutral-600"
             }`}
           >
@@ -52,7 +52,7 @@ export function ExportBar({ targetRef, fileName = "invitation-card" }: Props) {
         <button
           disabled={busy !== null}
           onClick={() => withNode((n) => downloadCard(n, { format, fileName }), "download")}
-          className="flex-1 rounded-lg bg-neutral-900 px-4 py-3 text-sm font-semibold text-white transition hover:bg-neutral-800 disabled:opacity-50"
+          className="bg-red-500 flex-1 rounded-lg px-4 py-3 text-sm font-semibold text-white transition hover:bg-neutral-800 disabled:opacity-50"
         >
           {busy === "download" ? "Preparing…" : justDownloaded ? "Downloaded ✓" : "Download Image"}
         </button>
