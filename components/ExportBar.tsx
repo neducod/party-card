@@ -40,7 +40,7 @@ export function ExportBar({ targetRef, fileName = "invitation-card" }: Props) {
             onClick={() => setFormat(f)}
             className={`rounded-md border px-3 py-1.5 text-xs font-medium uppercase transition ${
               format === f
-                ? "border-neutral-900 bg-neutral-900 text-black"
+                ? "border-neutral-900 bg-neutral-900 text-white"
                 : "border-neutral-300 bg-white text-neutral-600 hover:border-neutral-400"
             }`}
           >
