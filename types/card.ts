@@ -41,12 +41,12 @@ export const FONT_OPTIONS = [
 
 export const DEFAULT_CARD_STATE: CardState = {
   details: {
-    hostName: "Alex",
-    eventName: "Birthday Party",
-    date: "August 20, 2026",
-    time: "7:00 PM",
-    venue: "The Garden Terrace",
-    note: "Come ready to dance!",
+    hostName: "",
+    eventName: "",
+    date: "",
+    time: "",
+    venue: "",
+    note: "",
   },
   style: {
     backgroundMode: "gradient",
