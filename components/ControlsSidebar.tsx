@@ -81,6 +81,15 @@ export function ControlsSidebar({ state, updateDetails, updateStyle, updateGradi
           />
         </Field>
 
+        <Field label="Invitation">
+          <input
+            type="text"
+            value={details.Invitation ?? ""}
+            onChange={(e) => updateDetails ({invitation: e.target.value})}
+            className="input text-black"
+            placeholder="Please come alone"
+        </Field>
+
         <Field label="Custom Note">
           <textarea
             value={details.note ?? ""}
