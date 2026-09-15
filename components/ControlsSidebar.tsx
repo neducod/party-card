@@ -54,7 +54,7 @@ export function ControlsSidebar({ state, updateDetails, updateStyle, updateGradi
             value={details.hostName}
             onChange={(e) => updateDetails({ hostName: e.target.value })}
             className="input text-black"
-            placeholder="Alex"
+            placeholder="Josephine"
           />
         </Field>
 
@@ -74,7 +74,7 @@ export function ControlsSidebar({ state, updateDetails, updateStyle, updateGradi
             value={details.date ?? ""}
             onChange={(e) => updateDetails({ date: e.target.value })}
             className="input text-black"
-            placeholder="August 20, 2026"
+            placeholder="October 20, 2026"
           />
         </Field>
 
