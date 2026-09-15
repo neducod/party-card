@@ -90,14 +90,24 @@ export function ControlsSidebar({ state, updateDetails, updateStyle, updateGradi
             placeholder="Please come alone"
         </Field> */}
 
-        <Field label="Custom Note">
+        {/* <Field label="Custom Note">
           <textarea
             value={details.note ?? ""}
             onChange={(e) => updateDetails({ note: e.target.value })}
             className="input min-h-[70px] resize-none text-black"
             placeholder="Come ready to dance!"
           />
+        </Field> */}
+
+        <Field label="Custom Note">
+          <textarea
+            value={details.note ?? ""}
+            onChange={(e) => updateDetails({ note: e.target.value })}
+            className="input min-h-[70px] resize-none text-black placeholder:text-gray-400"
+            placeholder="Come ready to dance!"
+          />
         </Field>
+
       </section>
 
       {/* Background Options */}
