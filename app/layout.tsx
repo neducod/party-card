@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Party Cards",
+  title: "Ink and Paint",
   description: "Generate your very own custom party invite cards",
 };
 
