@@ -43,7 +43,7 @@ export function ExportBar({ targetRef, fileName = "invitation-card" }: Props) {
                 ? "border-neutral-900 bg-neutral-900 text-black"
                 : "border-neutral-300 bg-white text-neutral-600 hover:border-neutral-400"
             }`}
-          >hhhh
+          >
             {f}
           </button>
         ))}
