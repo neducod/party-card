@@ -30,9 +30,10 @@ export function ControlsSidebar({ state, updateDetails, updateStyle, updateGradi
   const removeImage = () => {
     updateStyle({ backgroundImage: null, backgroundMode: "gradient" });
   };
+  //flex w-full max-w-sm flex-col gap-6 overflow-y-auto border-r border-neutral-200 bg-white p-6
 
   return (
-    <aside className="flex w-full max-w-sm flex-col gap-6 overflow-y-auto border-r border-neutral-200 bg-white p-6">
+    <aside className="flex w-full max-w-sm flex-col gap-4 overflow-y-auto border-b border-neutral-200 bg-white p-4 max-h-[30vh] md:max-h-none md:border-b-0 md:border-r md:p-6">
       <div className="flex flex-col p-4">
           <h1 className="text-xl font-extrabold text-[#E97451] ">Ink and Paint</h1>
           <p className="text-sm text-gray-500">Create your customize party invitation card</p>

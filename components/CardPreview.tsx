@@ -21,11 +21,11 @@ export const CardPreview = forwardRef<HTMLDivElement, CardPreviewProps>(
             backgroundPosition: "center",
           }
         : { background: style.backgroundColor };
-
+//relative flex aspect-[3/4] w-full max-w-md flex-col items-center justify-center overflow-hidden rounded-2xl px-8 py-12 text-center shadow-2xl
     return (
       <div
         ref={ref}
-        className="relative flex aspect-[3/4] w-full max-w-md flex-col items-center justify-center overflow-hidden rounded-2xl px-8 py-12 text-center shadow-2xl"
+        className="relative flex aspect-[3/4] w-full max-w-[280px] sm:max-w-md flex-col items-center justify-center overflow-hidden rounded-2xl px-6 py-8 md:px-8 md:py-12 text-center shadow-2xl"
         style={{ ...backgroundStyle, color: style.textColor, fontFamily: style.fontFamily }}
       >
         {/* Dark overlay so text stays readable on busy photos */}
