@@ -11,7 +11,7 @@ export default function Home() {
   const previewRef = useRef<HTMLDivElement>(null);
 //flex h-screen w-full flex-col md:flex-row
   return (
-    <main className="flex min-h-screen w-full flex-col md:h-screen md:flex-row">
+    <main className="flex min-h-screen w-full flex-col md:h-screen md:flex-row bg-white">
       <ControlsSidebar
         state={cardState.state}
         updateDetails={cardState.updateDetails}
