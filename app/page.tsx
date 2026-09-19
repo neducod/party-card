@@ -20,7 +20,7 @@ export default function Home() {
         reset={cardState.reset}
       />
       {/*flex flex-1 flex-col items-center justify-center gap-6 bg-neutral-100 p-8  */}
-      <section className="flex flex-1 flex-col items-center justify-start gap-4 bg-neutral-100 p-4 py-6 md:justify-center md:p-8">
+      <section className="flex flex-1 flex-col items-center justify-start gap-8 bg-neutral-100 p-4 py-6 md:justify-center md:p-8">
         <CardPreview ref={previewRef} state={cardState.state} />
         <ExportBar targetRef={previewRef as React.RefObject<HTMLDivElement>} fileName={cardState.state.details.eventName || "invitation"} 
 />
